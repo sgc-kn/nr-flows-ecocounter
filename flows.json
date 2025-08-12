@@ -1,1 +1,2367 @@
-[]
+[
+    {
+        "id": "b4dbb932abd10490",
+        "type": "tab",
+        "label": "Stellio NGSI-LD Flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "49203917ef3dc53c",
+        "type": "tab",
+        "label": "Stellio Helper",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "feeb3a3da4155b63",
+        "type": "tab",
+        "label": "Legacy",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8547a3b818800650",
+        "type": "group",
+        "z": "b4dbb932abd10490",
+        "name": "Send to platform",
+        "style": {
+            "fill": "#dbcbe7",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "ba03599af14974d5",
+            "bea5eb1b57b93a8c",
+            "48cb872bad447837",
+            "52635ab420ac9b57",
+            "e877cd13dd0095ee"
+        ],
+        "x": 894,
+        "y": 619,
+        "w": 512,
+        "h": 262
+    },
+    {
+        "id": "9bb62de76d856a4d",
+        "type": "group",
+        "z": "49203917ef3dc53c",
+        "name": "Get Subscriptions",
+        "style": {
+            "stroke": "#ffefbf",
+            "fill": "#ffff7f",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "2e36820119375021",
+            "080ab472d262251c",
+            "c75e48673f6853fc",
+            "bdc544139ebcbdf3"
+        ],
+        "x": 74,
+        "y": 79,
+        "w": 872,
+        "h": 82
+    },
+    {
+        "id": "6dd86781514dcb3a",
+        "type": "group",
+        "z": "49203917ef3dc53c",
+        "name": "Delete Subscription (Stellio)",
+        "style": {
+            "stroke": "#ffefbf",
+            "fill": "#ff7f7f",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "10be74007c50d1aa",
+            "4e70e0215b15eddc",
+            "acbc43b901b13459",
+            "0846d8739a3a413e"
+        ],
+        "x": 74,
+        "y": 439,
+        "w": 872,
+        "h": 82
+    },
+    {
+        "id": "ac0b1ae0b3d6d0d5",
+        "type": "group",
+        "z": "49203917ef3dc53c",
+        "name": "Create subscription",
+        "style": {
+            "fill": "#c8e7a7",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "50f6c90273d64dec",
+            "9e13e3cb6787596e",
+            "af2b75ee75418e36",
+            "efc1dbde7ca33800",
+            "2a90adb0c7c87f69",
+            "bc522295a33c44e8",
+            "e22b47130cab0aff",
+            "922ae5c915dbfef5",
+            "dd05473a52b6b668",
+            "c345fc4b7d75c548"
+        ],
+        "x": 74,
+        "y": 179,
+        "w": 1252,
+        "h": 242
+    },
+    {
+        "id": "40411f41f2a1329e",
+        "type": "group",
+        "z": "49203917ef3dc53c",
+        "name": "Delete entity",
+        "style": {
+            "stroke": "#ffefbf",
+            "fill": "#ff7f7f",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "7a1e7516db7233dd",
+            "0a5fa65bb808e3f5",
+            "981249c2044a8134",
+            "773aa9ef6eb2d64d"
+        ],
+        "x": 74,
+        "y": 539,
+        "w": 872,
+        "h": 82
+    },
+    {
+        "id": "240edba64c1f0851",
+        "type": "group",
+        "z": "b4dbb932abd10490",
+        "name": "Get data",
+        "style": {
+            "label": true,
+            "fill": "#e3f3d3",
+            "color": "#000000"
+        },
+        "nodes": [
+            "5bcdff5d63eb9867",
+            "2ce7a9ee491c852d",
+            "8f961a518dfb34b5",
+            "d9184ab94fa2f059",
+            "b7d7fc6a1bce31ce",
+            "716fa99a0028ca96",
+            "cc84f54efa6db716"
+        ],
+        "x": 44,
+        "y": 239,
+        "w": 962,
+        "h": 202
+    },
+    {
+        "id": "a1076cc9dbadd9d3",
+        "type": "group",
+        "z": "b4dbb932abd10490",
+        "name": "Convert data",
+        "style": {
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "9395095891c5ac35"
+        ],
+        "x": 374,
+        "y": 499,
+        "w": 372,
+        "h": 82
+    },
+    {
+        "id": "2ce7a9ee491c852d",
+        "type": "function",
+        "z": "b4dbb932abd10490",
+        "g": "240edba64c1f0851",
+        "name": "Prepare API Call",
+        "func": "msg.url = \"https://api.eco-counter.com/api/v2/sites\";\n\nmsg.headers = {};\nmsg.headers[\"X-API-KEY\"] = env.get(\"ECO_COUNTER_API_KEY\");\nmsg.headers[\"Accept\"] = \"application/json\"\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 280,
+        "wires": [
+            [
+                "8f961a518dfb34b5"
+            ]
+        ]
+    },
+    {
+        "id": "8f961a518dfb34b5",
+        "type": "http request",
+        "z": "b4dbb932abd10490",
+        "g": "240edba64c1f0851",
+        "name": "GET Site Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 580,
+        "y": 280,
+        "wires": [
+            [
+                "d9184ab94fa2f059"
+            ]
+        ]
+    },
+    {
+        "id": "ba03599af14974d5",
+        "type": "debug",
+        "z": "b4dbb932abd10490",
+        "g": "8547a3b818800650",
+        "name": "debug post",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1290,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "bea5eb1b57b93a8c",
+        "type": "function",
+        "z": "b4dbb932abd10490",
+        "g": "8547a3b818800650",
+        "name": "Prepare POST",
+        "func": "msg.url =  env.get(\"STELLIO_API_URL\") + \"/ngsi-ld/v1/entityOperations/upsert?options=update\";\n\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/ld+json';\nmsg.headers['NGSILD-Tenant'] = env.get(\"FIWARE_SERVICE\");\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1000,
+        "y": 660,
+        "wires": [
+            [
+                "ba03599af14974d5",
+                "48cb872bad447837"
+            ]
+        ]
+    },
+    {
+        "id": "48cb872bad447837",
+        "type": "http request",
+        "z": "b4dbb932abd10490",
+        "g": "8547a3b818800650",
+        "name": "POST to Stellio",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1020,
+        "y": 760,
+        "wires": [
+            [
+                "e877cd13dd0095ee",
+                "52635ab420ac9b57"
+            ]
+        ]
+    },
+    {
+        "id": "52635ab420ac9b57",
+        "type": "debug",
+        "z": "b4dbb932abd10490",
+        "g": "8547a3b818800650",
+        "name": "timestamp",
+        "active": false,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "$fromMillis(msg.timestamp)",
+        "statusType": "jsonata",
+        "x": 1250,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "e877cd13dd0095ee",
+        "type": "debug",
+        "z": "b4dbb932abd10490",
+        "g": "8547a3b818800650",
+        "name": "Response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "'status: ' & msg.statusCode",
+        "statusType": "jsonata",
+        "x": 1240,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "9395095891c5ac35",
+        "type": "function",
+        "z": "b4dbb932abd10490",
+        "g": "a1076cc9dbadd9d3",
+        "name": "Prepare TrafficFlowObserved Datamodel",
+        "func": "let entities = []\n\nconst data = msg.payload[0].data\n\nfor (const count of data) {\n    if( count.traffic.counts == null || count.traffic.counts == undefined )\n        continue;\n    \n    const datamodel = {\n        \"id\": \"urn:sdm:TrafficFlowObserved:konstanz:ecocounter-\" + msg.siteData.id,\n        \"type\": \"TrafficFlowObserved\",\n        \"name\": {\n            \"type\": \"Property\",\n            \"value\": msg.siteData.name\n        },\n        \"dateObserved\": {\n            \"type\": \"Property\",\n            \"value\": count.timestamp\n        },\n        \"location\": {\n            \"type\": \"GeoProperty\",\n            \"value\": {\n                \"type\": \"Point\",\n                \"coordinates\": [msg.siteData.location.lon, msg.siteData.location.lat]\n            },\n        },\n        \"intensity\": {\n            \"type\": \"Property\",\n            \"value\": count.traffic.counts,\n            \"observedAt\": count.timestamp\n        },\n        \"vehicleType\": {\n            \"type\": \"Property\",\n            \"value\": \"bicycle\"\n        },\n        \"@context\": [\n            `https://context.${ env.get(\"DOMAIN\") }/main-context.jsonld`\n        ]\n    }\n    \n    entities.push(datamodel)\n}\n\nmsg.payload = entities\n\nif (msg.payload.length > 0) {\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 540,
+        "wires": [
+            [
+                "39dd12f723d39d64"
+            ]
+        ]
+    },
+    {
+        "id": "5bcdff5d63eb9867",
+        "type": "inject",
+        "z": "b4dbb932abd10490",
+        "g": "240edba64c1f0851",
+        "name": "",
+        "props": [
+            {
+                "p": "timestamp",
+                "v": "",
+                "vt": "date"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 06 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 280,
+        "wires": [
+            [
+                "2ce7a9ee491c852d"
+            ]
+        ]
+    },
+    {
+        "id": "d9184ab94fa2f059",
+        "type": "split",
+        "z": "b4dbb932abd10490",
+        "g": "240edba64c1f0851",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 410,
+        "y": 340,
+        "wires": [
+            [
+                "b7d7fc6a1bce31ce"
+            ]
+        ]
+    },
+    {
+        "id": "b7d7fc6a1bce31ce",
+        "type": "function",
+        "z": "b4dbb932abd10490",
+        "g": "240edba64c1f0851",
+        "name": "Prepare Counting Data API Call",
+        "func": "//const begin = \"2023-02-03T00%3A00%3A00\"\n//const end = \"2023-02-04T00%3A00%3A00\"\n\nmsg.siteData = msg.payload\n\nconst begin24 = new Date(new Date().setDate(new Date().getDate() - 1))\nconst begin = new Date(begin24.setHours(begin24.getHours() - 6));\n\nconst end = new Date()\n\nconst siteId = msg.payload.id\n\n// Define a helper function to format a Date object into day and time strings.\nfunction formatDate(date) {\n  // Helper to ensure two-digit format for month, day, hours, minutes, and seconds\n  const pad = (num) => num.toString().padStart(2, '0');\n\n  // Format the day as YYYY-MM-DD\n  const day = date.getFullYear() + '-' + pad(date.getMonth() + 1) + '-' + pad(date.getDate());\n  // Format the time as HH:MM:SS\n  const time = pad(date.getHours()) + ':' + pad(date.getMinutes()) + ':' + pad(date.getSeconds());\n  \n  return { day, time };\n}\n\n// Extract the formatted day and time for both begin and end\nconst { day: startDate, time: startTime } = formatDate(begin);\nconst { day: endDate, time: endTime } = formatDate(end);\n\nmsg.url = \"https://api.eco-counter.com/api/v2/history/traffic/aggregated?siteId=\"+siteId+\"&startDate=\"+startDate+\"&endDate=\"+endDate+\"&startDate=\"+startDate+\"&endDate=\"+endDate+\"&startTime=\"+startTime+\"&endTime=\"+endTime+\"&granularity=\"+\"PT15M\";\n\nmsg.headers = {};\nmsg.headers[\"X-API-KEY\"] = env.get(\"ECO_COUNTER_API_KEY\");\nmsg.headers[\"Accept\"] = \"application/json\"\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 340,
+        "wires": [
+            [
+                "cc84f54efa6db716"
+            ]
+        ]
+    },
+    {
+        "id": "716fa99a0028ca96",
+        "type": "debug",
+        "z": "b4dbb932abd10490",
+        "g": "240edba64c1f0851",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "cc84f54efa6db716",
+        "type": "http request",
+        "z": "b4dbb932abd10490",
+        "g": "240edba64c1f0851",
+        "name": "GET",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 400,
+        "wires": [
+            [
+                "716fa99a0028ca96",
+                "9395095891c5ac35"
+            ]
+        ]
+    },
+    {
+        "id": "39dd12f723d39d64",
+        "type": "delay",
+        "z": "b4dbb932abd10490",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "30",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 910,
+        "y": 540,
+        "wires": [
+            [
+                "ddf202ddb590a601"
+            ]
+        ]
+    },
+    {
+        "id": "ddf202ddb590a601",
+        "type": "function",
+        "z": "b4dbb932abd10490",
+        "name": "filter out undefined fields",
+        "func": "for (let [index, entity] of msg.payload.entries()) {\n    for (let [field, jsonValue] of Object.entries(entity)) {\n        if (field === 'id' || field === 'type' || field === '@context') {\n            continue\n        }\n        if (jsonValue.value === undefined || jsonValue.value === null) {\n            delete msg.payload[index][field];\n        }\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 540,
+        "wires": [
+            [
+                "bea5eb1b57b93a8c"
+            ]
+        ]
+    },
+    {
+        "id": "2e36820119375021",
+        "type": "inject",
+        "z": "49203917ef3dc53c",
+        "g": "9bb62de76d856a4d",
+        "name": "Go!",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "080ab472d262251c"
+            ]
+        ]
+    },
+    {
+        "id": "080ab472d262251c",
+        "type": "function",
+        "z": "49203917ef3dc53c",
+        "g": "9bb62de76d856a4d",
+        "name": "Setup GET Request",
+        "func": "msg.url = env.get(\"STELLIO_API_URL\") + \"/ngsi-ld/v1/subscriptions/?limit=100\";\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/ld+json';\nmsg.headers['NGSILD-Tenant'] = env.get(\"FIWARE_SERVICE\");\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 120,
+        "wires": [
+            [
+                "c75e48673f6853fc"
+            ]
+        ]
+    },
+    {
+        "id": "c75e48673f6853fc",
+        "type": "http request",
+        "z": "49203917ef3dc53c",
+        "g": "9bb62de76d856a4d",
+        "name": "http GET Request",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 630,
+        "y": 120,
+        "wires": [
+            [
+                "bdc544139ebcbdf3"
+            ]
+        ]
+    },
+    {
+        "id": "bdc544139ebcbdf3",
+        "type": "debug",
+        "z": "49203917ef3dc53c",
+        "g": "9bb62de76d856a4d",
+        "name": "debug 61",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "10be74007c50d1aa",
+        "type": "inject",
+        "z": "49203917ef3dc53c",
+        "g": "6dd86781514dcb3a",
+        "name": "Go!",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 480,
+        "wires": [
+            [
+                "4e70e0215b15eddc"
+            ]
+        ]
+    },
+    {
+        "id": "4e70e0215b15eddc",
+        "type": "function",
+        "z": "49203917ef3dc53c",
+        "g": "6dd86781514dcb3a",
+        "name": "Setup Request",
+        "func": "msg.url = env.get(\"STELLIO_API_URL\") + \"/ngsi-ld/v1/subscriptions/urn:ngsi-ld:Subscription:b908c78a-56b6-4bc8-9463-371f15abc470\";\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/ld+json';\nmsg.headers['NGSILD-Tenant'] = env.get(\"FIWARE_SERVICE\");\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 480,
+        "wires": [
+            [
+                "acbc43b901b13459"
+            ]
+        ]
+    },
+    {
+        "id": "acbc43b901b13459",
+        "type": "http request",
+        "z": "49203917ef3dc53c",
+        "g": "6dd86781514dcb3a",
+        "name": "DELETE",
+        "method": "DELETE",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 600,
+        "y": 480,
+        "wires": [
+            [
+                "0846d8739a3a413e"
+            ]
+        ]
+    },
+    {
+        "id": "0846d8739a3a413e",
+        "type": "debug",
+        "z": "49203917ef3dc53c",
+        "g": "6dd86781514dcb3a",
+        "name": "debug 84",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "50f6c90273d64dec",
+        "type": "http request",
+        "z": "49203917ef3dc53c",
+        "g": "ac0b1ae0b3d6d0d5",
+        "name": "http POST Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 570,
+        "y": 380,
+        "wires": [
+            [
+                "af2b75ee75418e36"
+            ]
+        ]
+    },
+    {
+        "id": "9e13e3cb6787596e",
+        "type": "inject",
+        "z": "49203917ef3dc53c",
+        "g": "ac0b1ae0b3d6d0d5",
+        "name": "Go!",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 260,
+        "wires": [
+            [
+                "bc522295a33c44e8"
+            ]
+        ]
+    },
+    {
+        "id": "af2b75ee75418e36",
+        "type": "debug",
+        "z": "49203917ef3dc53c",
+        "g": "ac0b1ae0b3d6d0d5",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "efc1dbde7ca33800",
+        "type": "function",
+        "z": "49203917ef3dc53c",
+        "g": "ac0b1ae0b3d6d0d5",
+        "name": "Setup Request",
+        "func": "msg.url = env.get(\"STELLIO_API_URL\") + \"/ngsi-ld/v1/subscriptions\";\n\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/ld+json';\nmsg.headers['NGSILD-Tenant'] = env.get(\"FIWARE_SERVICE\");\n\nmsg.payload = {\n   \t\"type\": \"Subscription\",\n\t\"subscriptionName\": \"Subscription for entity type \" + msg.dataModel + \".\",\n\t\"description\": \"This subscription triggers everytime an entity from type \" + msg.dataModel + \" is updated. Only watching attribute dateObserved to avoid duplications.\",\n   \t\"entities\": [\n\t\t{\n\t\t\t\"type\": msg.dataModel\n   \t\t}\n\t],\n    \"watchedAttributes\": [\"dateObserved\"],\n\t\"notificationTrigger\": [\"entityCreated\", \"attributeCreated\", \"attributeUpdated\"],\n    \"notification\": {\n       \t\"format\": \"normalized\",\n       \t\"endpoint\": {\n\t\t\t\t  \"uri\": env.get(\"QL_LD_API_URL\") + \"/v2/notify\",\n          \t\"accept\": \"application/json\"\n       \t}\n    },\n    \"@context\": [\n\t\t`https://context.${ env.get(\"DOMAIN\") }/main-context.jsonld`\n    ]\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 380,
+        "wires": [
+            [
+                "50f6c90273d64dec"
+            ]
+        ]
+    },
+    {
+        "id": "2a90adb0c7c87f69",
+        "type": "function",
+        "z": "49203917ef3dc53c",
+        "g": "ac0b1ae0b3d6d0d5",
+        "name": "Check if already exists",
+        "func": "msg.sub_exists = false;\n\nfor (let i = 0; i < msg.payload.length; i++) {\n    const type = msg.payload[i].entities[0].type;\n\n    if (type.includes(msg.dataModel)){\n        msg.sub_exists = true;\n        node.warn(\"There is already a subscription for this type.\")\n        break;\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 260,
+        "wires": [
+            [
+                "922ae5c915dbfef5"
+            ]
+        ]
+    },
+    {
+        "id": "bc522295a33c44e8",
+        "type": "function",
+        "z": "49203917ef3dc53c",
+        "g": "ac0b1ae0b3d6d0d5",
+        "name": "Setup GET Request",
+        "func": "msg.url = env.get(\"STELLIO_API_URL\") + \"/ngsi-ld/v1/subscriptions/?limit=100\";\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/ld+json';\nmsg.headers['NGSILD-Tenant'] = env.get(\"FIWARE_SERVICE\");\nmsg.dataModel = \"TrafficFlowObserved\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 260,
+        "wires": [
+            [
+                "e22b47130cab0aff"
+            ]
+        ]
+    },
+    {
+        "id": "e22b47130cab0aff",
+        "type": "http request",
+        "z": "49203917ef3dc53c",
+        "g": "ac0b1ae0b3d6d0d5",
+        "name": "http GET Request",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 260,
+        "wires": [
+            [
+                "2a90adb0c7c87f69"
+            ]
+        ]
+    },
+    {
+        "id": "922ae5c915dbfef5",
+        "type": "switch",
+        "z": "49203917ef3dc53c",
+        "g": "ac0b1ae0b3d6d0d5",
+        "name": "",
+        "property": "sub_exists",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 330,
+        "y": 320,
+        "wires": [
+            [
+                "dd05473a52b6b668"
+            ],
+            [
+                "efc1dbde7ca33800"
+            ]
+        ]
+    },
+    {
+        "id": "dd05473a52b6b668",
+        "type": "debug",
+        "z": "49203917ef3dc53c",
+        "g": "ac0b1ae0b3d6d0d5",
+        "name": "debug 83",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "c345fc4b7d75c548",
+        "type": "comment",
+        "z": "49203917ef3dc53c",
+        "g": "ac0b1ae0b3d6d0d5",
+        "name": "Because of what Stellio does to the type used in subcriptions, the check is only checking if existing subscriptions are on a type containing a specified datamodel and not if it is equal to.",
+        "info": "",
+        "x": 700,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "7a1e7516db7233dd",
+        "type": "inject",
+        "z": "49203917ef3dc53c",
+        "g": "40411f41f2a1329e",
+        "name": "Go!",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 580,
+        "wires": [
+            [
+                "0a5fa65bb808e3f5"
+            ]
+        ]
+    },
+    {
+        "id": "0a5fa65bb808e3f5",
+        "type": "function",
+        "z": "49203917ef3dc53c",
+        "g": "40411f41f2a1329e",
+        "name": "Setup Request",
+        "func": "msg.url = env.get(\"STELLIO_API_URL\") + \"/ngsi-ld/v1/entities/urn:sdm:TrafficFlowObserved:konstanz:ecocounter-300016792\";\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/ld+json';\nmsg.headers['NGSILD-Tenant'] = env.get(\"FIWARE_SERVICE\");\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 580,
+        "wires": [
+            [
+                "981249c2044a8134"
+            ]
+        ]
+    },
+    {
+        "id": "981249c2044a8134",
+        "type": "http request",
+        "z": "49203917ef3dc53c",
+        "g": "40411f41f2a1329e",
+        "name": "http GET Request",
+        "method": "DELETE",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 630,
+        "y": 580,
+        "wires": [
+            [
+                "773aa9ef6eb2d64d"
+            ]
+        ]
+    },
+    {
+        "id": "773aa9ef6eb2d64d",
+        "type": "debug",
+        "z": "49203917ef3dc53c",
+        "g": "40411f41f2a1329e",
+        "name": "debug 87",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "66238c8f76a12778",
+        "type": "inject",
+        "z": "feeb3a3da4155b63",
+        "d": true,
+        "name": "Inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 06 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "e45565c79ff74d2a"
+            ]
+        ]
+    },
+    {
+        "id": "d88a69b99d883555",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "GET Counting Site Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 230,
+        "y": 220,
+        "wires": [
+            [
+                "34d70a2c4936a3ef"
+            ]
+        ]
+    },
+    {
+        "id": "e45565c79ff74d2a",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare API Call",
+        "func": "msg.url = \"https://apieco.eco-counter-tools.com/api/1.0/site/100046462\";\n\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = \"Bearer b04c567c48f11398c2d144195693a1d\";\nmsg.headers[\"Accept\"] = \"application/json\"\n\nmsg.payload=\"\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 160,
+        "wires": [
+            [
+                "d88a69b99d883555"
+            ]
+        ]
+    },
+    {
+        "id": "34d70a2c4936a3ef",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Store Counting Site Info",
+        "func": "msg.countingSiteInfo = msg.payload;\nmsg.payload = \"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 280,
+        "wires": [
+            [
+                "7ba9903227aedba8"
+            ]
+        ]
+    },
+    {
+        "id": "7ba9903227aedba8",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare Counting Data API Call",
+        "func": "//const begin = \"2023-02-03T00%3A00%3A00\"\n//const end = \"2023-02-04T00%3A00%3A00\"\n\nconst begin24 = new Date(new Date().setDate(new Date().getDate() - 1))\nconst begin = new Date(begin24.setHours(begin24.getHours() - 6)).toISOString();\n\nconst end = new Date().toISOString()\n\n\nmsg.url = \"https://apieco.eco-counter-tools.com/api/1.0/data/site/100046462?begin=\"+begin+\"&end=\"+end+\"&step=15m\";\n\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = \"Bearer b04c567c48f11398c2d144195693a1d\";\nmsg.headers[\"Accept\"] = \"application/json\"\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 100,
+        "wires": [
+            [
+                "3de068faafa467d2"
+            ]
+        ]
+    },
+    {
+        "id": "3de068faafa467d2",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "GET Counter Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 550,
+        "y": 220,
+        "wires": [
+            [
+                "7678735aef2bea88"
+            ]
+        ]
+    },
+    {
+        "id": "736fdfde57ce99e2",
+        "type": "comment",
+        "z": "feeb3a3da4155b63",
+        "name": "Schedule Fahrradbrücke",
+        "info": "",
+        "x": 190,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "a7f079d01b6860b8",
+        "type": "inject",
+        "z": "feeb3a3da4155b63",
+        "d": true,
+        "name": "Inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 06 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 360,
+        "wires": [
+            [
+                "1f436f20765059a2"
+            ]
+        ]
+    },
+    {
+        "id": "624ad14850ed62dd",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "GET Counting Site Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 210,
+        "y": 520,
+        "wires": [
+            [
+                "1b9221f6428c66ec"
+            ]
+        ]
+    },
+    {
+        "id": "20273189ddb555e7",
+        "type": "debug",
+        "z": "feeb3a3da4155b63",
+        "name": "debug 18",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "1f436f20765059a2",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare API Call",
+        "func": "msg.url = \"https://apieco.eco-counter-tools.com/api/1.0/site/300016793\";\n\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = \"Bearer b04c567c48f11398c2d144195693a1d\";\nmsg.headers[\"Accept\"] = \"application/json\"\n\nmsg.payload=\"\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 460,
+        "wires": [
+            [
+                "624ad14850ed62dd"
+            ]
+        ]
+    },
+    {
+        "id": "1b9221f6428c66ec",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Store Counting Site Info",
+        "func": "msg.countingSiteInfo = msg.payload;\nmsg.payload = \"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 580,
+        "wires": [
+            [
+                "2bf57f62d16dd7d0"
+            ]
+        ]
+    },
+    {
+        "id": "2bf57f62d16dd7d0",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare Counting Data API Call",
+        "func": "//const begin = \"2023-02-03T00%3A00%3A00\"\n//const end = \"2023-02-04T00%3A00%3A00\"\n\nconst begin24 = new Date(new Date().setDate(new Date().getDate() - 1))\nconst begin = new Date(begin24.setHours(begin24.getHours() - 6)).toISOString();\n\nconst end = new Date().toISOString()\n\n\nmsg.url = \"https://apieco.eco-counter-tools.com/api/1.0/data/site/300016793?begin=\"+begin+\"&end=\"+end+\"&step=15m\";\n\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = \"Bearer b04c567c48f11398c2d144195693a1d\";\nmsg.headers[\"Accept\"] = \"application/json\"\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 400,
+        "wires": [
+            [
+                "a70ae2559f56c45a"
+            ]
+        ]
+    },
+    {
+        "id": "a70ae2559f56c45a",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "GET Counter Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 490,
+        "y": 460,
+        "wires": [
+            [
+                "a84907ef21cdcdbb"
+            ]
+        ]
+    },
+    {
+        "id": "a84907ef21cdcdbb",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare TrafficFlowObserved Datamodel",
+        "func": "let entities = []\n\nfor (const count of msg.payload) {\n    if( count.counts == null || count.status == null )\n        continue;\n    \n    let ngsi = {}\n\n    ngsi.id = \"Konstanz-EcoCounter-\" + msg.countingSiteInfo.id\n    ngsi.type = \"TrafficFlowObserved\"\n\n    let name = {}\n    name.type = \"String\"\n    name.value = msg.countingSiteInfo.name\n    ngsi.name = name\n\n    let dateObserved = {}\n    dateObserved.type = \"String\"\n    dateObserved.value = count.isoDate\n    ngsi.dateObserved = dateObserved\n\n    let location = {}\n    location.type = \"geo:json\"\n    location.value = {\n        \"type\": \"Point\",\n        \"coordinates\": [msg.countingSiteInfo.longitude, msg.countingSiteInfo.latitude]\n    }\n    ngsi.location = location\n\n    let intensity = {}\n    intensity.type = \"Number\"\n    intensity.value = count.counts\n    if (intensity.value) {\n        ngsi.intensity = intensity\n    }\n\n    let vehicleType = {}\n    vehicleType.type = \"String\"\n    vehicleType.value = \"bicycle\"\n    ngsi.vehicleType = vehicleType\n\n    entities.push(ngsi)\n}\n\nmsg.ngsiEntities = entities\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 540,
+        "wires": [
+            [
+                "cffb209b494fb57c"
+            ]
+        ]
+    },
+    {
+        "id": "cffb209b494fb57c",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Setup Orion Update Request",
+        "func": "msg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/op/update\"\n\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'ecocounter'\n\nmsg.payload = {}\n\nif (msg.ngsiEntities.length > 2000) {\n    const data = msg.ngsiEntities.slice(0, 2000)\n    const rest = msg.ngsiEntities.slice(2000)\n\n    msg.payload.entities = data\n    msg.ngsiEntities = rest\n\n    msg.remaining_data = true\n} else {\n    msg.payload.entities = msg.ngsiEntities;\n    msg.remaining_data = false\n}\n\nmsg.payload.actionType = 'append'\nmsg.payload = msg.payload;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 380,
+        "wires": [
+            [
+                "83db9c03cf8fa025",
+                "20273189ddb555e7"
+            ]
+        ]
+    },
+    {
+        "id": "83db9c03cf8fa025",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "POST Data to Orion",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 980,
+        "y": 440,
+        "wires": [
+            [
+                "20273189ddb555e7"
+            ]
+        ]
+    },
+    {
+        "id": "dcaf64ef1bf57c48",
+        "type": "comment",
+        "z": "feeb3a3da4155b63",
+        "name": "Schedule Petershausen",
+        "info": "",
+        "x": 160,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "1397f722b5ab164b",
+        "type": "inject",
+        "z": "feeb3a3da4155b63",
+        "d": true,
+        "name": "Inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 06 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 660,
+        "wires": [
+            [
+                "46ab698bb1096947"
+            ]
+        ]
+    },
+    {
+        "id": "1cb66d52c6f0d5ee",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "GET Counting Site Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 190,
+        "y": 820,
+        "wires": [
+            [
+                "a72afc8bd3193369"
+            ]
+        ]
+    },
+    {
+        "id": "c964ce880ba56dd0",
+        "type": "debug",
+        "z": "feeb3a3da4155b63",
+        "name": "debug 19",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "46ab698bb1096947",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare API Call",
+        "func": "msg.url = \"https://apieco.eco-counter-tools.com/api/1.0/site/300031079\";\n\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = \"Bearer b04c567c48f11398c2d144195693a1d\";\nmsg.headers[\"Accept\"] = \"application/json\"\n\nmsg.payload=\"\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 130,
+        "y": 760,
+        "wires": [
+            [
+                "1cb66d52c6f0d5ee"
+            ]
+        ]
+    },
+    {
+        "id": "a72afc8bd3193369",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Store Counting Site Info",
+        "func": "msg.countingSiteInfo = msg.payload;\nmsg.payload = \"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 880,
+        "wires": [
+            [
+                "174de8a164522e37"
+            ]
+        ]
+    },
+    {
+        "id": "174de8a164522e37",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare Counting Data API Call",
+        "func": "//const begin = \"2023-02-03T00%3A00%3A00\"\n//const end = \"2023-02-04T00%3A00%3A00\"\n\nconst begin24 = new Date(new Date().setDate(new Date().getDate() - 1))\nconst begin = new Date(begin24.setHours(begin24.getHours() - 6)).toISOString();\n\nconst end = new Date().toISOString()\n\n\nmsg.url = \"https://apieco.eco-counter-tools.com/api/1.0/data/site/300031079?begin=\"+begin+\"&end=\"+end+\"&step=15m\";\n\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = \"Bearer b04c567c48f11398c2d144195693a1d\";\nmsg.headers[\"Accept\"] = \"application/json\"\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 700,
+        "wires": [
+            [
+                "5d5b727050c728e0"
+            ]
+        ]
+    },
+    {
+        "id": "5d5b727050c728e0",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "GET Counter Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 470,
+        "y": 760,
+        "wires": [
+            [
+                "ea64b8e7c7dff7f9"
+            ]
+        ]
+    },
+    {
+        "id": "ea64b8e7c7dff7f9",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare TrafficFlowObserved Datamodel",
+        "func": "let entities = []\n\nfor (const count of msg.payload) {\n    if( count.counts == null || count.status == null )\n        continue;\n    \n    let ngsi = {}\n\n    ngsi.id = \"Konstanz-EcoCounter-\" + msg.countingSiteInfo.id\n    ngsi.type = \"TrafficFlowObserved\"\n\n    let name = {}\n    name.type = \"String\"\n    name.value = msg.countingSiteInfo.name\n    ngsi.name = name\n\n    let dateObserved = {}\n    dateObserved.type = \"String\"\n    dateObserved.value = count.isoDate\n    ngsi.dateObserved = dateObserved\n\n    let location = {}\n    location.type = \"geo:json\"\n    location.value = {\n        \"type\": \"Point\",\n        \"coordinates\": [msg.countingSiteInfo.longitude, msg.countingSiteInfo.latitude]\n    }\n    ngsi.location = location\n\n    let intensity = {}\n    intensity.type = \"Number\"\n    intensity.value = count.counts\n    if (intensity.value) {\n        ngsi.intensity = intensity\n    }\n\n    let vehicleType = {}\n    vehicleType.type = \"String\"\n    vehicleType.value = \"bicycle\"\n    ngsi.vehicleType = vehicleType\n\n    entities.push(ngsi)\n}\n\nmsg.ngsiEntities = entities\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 840,
+        "wires": [
+            [
+                "b8a38feab6ff9f7b"
+            ]
+        ]
+    },
+    {
+        "id": "b8a38feab6ff9f7b",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Setup Orion Update Request",
+        "func": "msg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/op/update\"\n\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'ecocounter'\n\nmsg.payload = {}\n\nif (msg.ngsiEntities.length > 2000) {\n    const data = msg.ngsiEntities.slice(0, 2000)\n    const rest = msg.ngsiEntities.slice(2000)\n\n    msg.payload.entities = data\n    msg.ngsiEntities = rest\n\n    msg.remaining_data = true\n} else {\n    msg.payload.entities = msg.ngsiEntities;\n    msg.remaining_data = false\n}\n\nmsg.payload.actionType = 'append'\nmsg.payload = msg.payload;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 680,
+        "wires": [
+            [
+                "5fdfb1260f89ea50",
+                "c964ce880ba56dd0"
+            ]
+        ]
+    },
+    {
+        "id": "5fdfb1260f89ea50",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "POST Data to Orion",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 960,
+        "y": 740,
+        "wires": [
+            [
+                "c964ce880ba56dd0"
+            ]
+        ]
+    },
+    {
+        "id": "a9215f4946f7dc16",
+        "type": "comment",
+        "z": "feeb3a3da4155b63",
+        "name": "Schedule Alte Rheinbrücke",
+        "info": "",
+        "x": 150,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "ea1fe975f90e0c24",
+        "type": "inject",
+        "z": "feeb3a3da4155b63",
+        "d": true,
+        "name": "Inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 06 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 960,
+        "wires": [
+            [
+                "4dcee284e5dc3719"
+            ]
+        ]
+    },
+    {
+        "id": "1110c5f495e47b72",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "GET Counting Site Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 190,
+        "y": 1120,
+        "wires": [
+            [
+                "c34472346b6864e3"
+            ]
+        ]
+    },
+    {
+        "id": "510c9e652ad39b36",
+        "type": "debug",
+        "z": "feeb3a3da4155b63",
+        "name": "debug 20",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "4dcee284e5dc3719",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare API Call",
+        "func": "msg.url = \"https://apieco.eco-counter-tools.com/api/1.0/site/300031088\";\n\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = \"Bearer b04c567c48f11398c2d144195693a1d\";\nmsg.headers[\"Accept\"] = \"application/json\"\n\nmsg.payload=\"\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 130,
+        "y": 1060,
+        "wires": [
+            [
+                "1110c5f495e47b72"
+            ]
+        ]
+    },
+    {
+        "id": "c34472346b6864e3",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Store Counting Site Info",
+        "func": "msg.countingSiteInfo = msg.payload;\nmsg.payload = \"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 1180,
+        "wires": [
+            [
+                "e14e9213993d5624"
+            ]
+        ]
+    },
+    {
+        "id": "e14e9213993d5624",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare Counting Data API Call",
+        "func": "//const begin = \"2023-02-03T00%3A00%3A00\"\n//const end = \"2023-02-04T00%3A00%3A00\"\n\nconst begin24 = new Date(new Date().setDate(new Date().getDate() - 1))\nconst begin = new Date(begin24.setHours(begin24.getHours() - 6)).toISOString();\n\nconst end = new Date().toISOString()\n\n\nmsg.url = \"https://apieco.eco-counter-tools.com/api/1.0/data/site/300031088?begin=\"+begin+\"&end=\"+end+\"&step=15m\";\n\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = \"Bearer b04c567c48f11398c2d144195693a1d\";\nmsg.headers[\"Accept\"] = \"application/json\"\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 1000,
+        "wires": [
+            [
+                "b486ede5d6915ad5"
+            ]
+        ]
+    },
+    {
+        "id": "b486ede5d6915ad5",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "GET Counter Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 470,
+        "y": 1060,
+        "wires": [
+            [
+                "c15d082f39a3aafc"
+            ]
+        ]
+    },
+    {
+        "id": "c15d082f39a3aafc",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare TrafficFlowObserved Datamodel",
+        "func": "let entities = []\n\nfor (const count of msg.payload) {\n    if( count.counts == null || count.status == null )\n        continue;\n    \n    let ngsi = {}\n\n    ngsi.id = \"Konstanz-EcoCounter-\" + msg.countingSiteInfo.id\n    ngsi.type = \"TrafficFlowObserved\"\n\n    let name = {}\n    name.type = \"String\"\n    name.value = msg.countingSiteInfo.name\n    ngsi.name = name\n\n    let dateObserved = {}\n    dateObserved.type = \"String\"\n    dateObserved.value = count.isoDate\n    ngsi.dateObserved = dateObserved\n\n    let location = {}\n    location.type = \"geo:json\"\n    location.value = {\n        \"type\": \"Point\",\n        \"coordinates\": [msg.countingSiteInfo.longitude, msg.countingSiteInfo.latitude]\n    }\n    ngsi.location = location\n\n    let intensity = {}\n    intensity.type = \"Number\"\n    intensity.value = count.counts\n    if (intensity.value) {\n        ngsi.intensity = intensity\n    }\n\n    let vehicleType = {}\n    vehicleType.type = \"String\"\n    vehicleType.value = \"bicycle\"\n    ngsi.vehicleType = vehicleType\n\n    entities.push(ngsi)\n}\n\nmsg.ngsiEntities = entities\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1140,
+        "wires": [
+            [
+                "390b214001b3fe23"
+            ]
+        ]
+    },
+    {
+        "id": "390b214001b3fe23",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Setup Orion Update Request",
+        "func": "msg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/op/update\"\n\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'ecocounter'\n\nmsg.payload = {}\n\nif (msg.ngsiEntities.length > 2000) {\n    const data = msg.ngsiEntities.slice(0, 2000)\n    const rest = msg.ngsiEntities.slice(2000)\n\n    msg.payload.entities = data\n    msg.ngsiEntities = rest\n\n    msg.remaining_data = true\n} else {\n    msg.payload.entities = msg.ngsiEntities;\n    msg.remaining_data = false\n}\n\nmsg.payload.actionType = 'append'\nmsg.payload = msg.payload;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 980,
+        "wires": [
+            [
+                "371dc6e6d1adce59",
+                "510c9e652ad39b36"
+            ]
+        ]
+    },
+    {
+        "id": "371dc6e6d1adce59",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "POST Data to Orion",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 960,
+        "y": 1040,
+        "wires": [
+            [
+                "510c9e652ad39b36"
+            ]
+        ]
+    },
+    {
+        "id": "fa171cd343ecb6b4",
+        "type": "comment",
+        "z": "feeb3a3da4155b63",
+        "name": "Schedule Friedrichstraße",
+        "info": "",
+        "x": 150,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "6256aec203d278da",
+        "type": "inject",
+        "z": "feeb3a3da4155b63",
+        "d": true,
+        "name": "Inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 06 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 1260,
+        "wires": [
+            [
+                "1ab8bdedab954d7e"
+            ]
+        ]
+    },
+    {
+        "id": "0e9e968c4ddf58d9",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "GET Counting Site Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 190,
+        "y": 1420,
+        "wires": [
+            [
+                "108e2f3ead2d2025"
+            ]
+        ]
+    },
+    {
+        "id": "5a7af2d87744cc70",
+        "type": "debug",
+        "z": "feeb3a3da4155b63",
+        "name": "debug 21",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "1ab8bdedab954d7e",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare API Call",
+        "func": "msg.url = \"https://apieco.eco-counter-tools.com/api/1.0/site/300016792\";\n\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = \"Bearer b04c567c48f11398c2d144195693a1d\";\nmsg.headers[\"Accept\"] = \"application/json\"\n\nmsg.payload=\"\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 130,
+        "y": 1360,
+        "wires": [
+            [
+                "0e9e968c4ddf58d9"
+            ]
+        ]
+    },
+    {
+        "id": "108e2f3ead2d2025",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Store Counting Site Info",
+        "func": "msg.countingSiteInfo = msg.payload;\nmsg.payload = \"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 1480,
+        "wires": [
+            [
+                "d372f4adcea51e6a"
+            ]
+        ]
+    },
+    {
+        "id": "d372f4adcea51e6a",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare Counting Data API Call",
+        "func": "//const begin = \"2023-02-03T00%3A00%3A00\"\n//const end = \"2023-02-04T00%3A00%3A00\"\n\nconst begin24 = new Date(new Date().setDate(new Date().getDate() - 1))\nconst begin = new Date(begin24.setHours(begin24.getHours() - 6)).toISOString();\n\nconst end = new Date().toISOString()\n\n\nmsg.url = \"https://apieco.eco-counter-tools.com/api/1.0/data/site/300016792?begin=\"+begin+\"&end=\"+end+\"&step=15m\";\n\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = \"Bearer b04c567c48f11398c2d144195693a1d\";\nmsg.headers[\"Accept\"] = \"application/json\"\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 1300,
+        "wires": [
+            [
+                "549bd0d05785ce02"
+            ]
+        ]
+    },
+    {
+        "id": "549bd0d05785ce02",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "GET Counter Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 470,
+        "y": 1360,
+        "wires": [
+            [
+                "f902c577b2ae31ef"
+            ]
+        ]
+    },
+    {
+        "id": "f902c577b2ae31ef",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare TrafficFlowObserved Datamodel",
+        "func": "let entities = []\n\nfor (const count of msg.payload) {\n    if( count.counts == null || count.status == null )\n        continue;\n    \n    let ngsi = {}\n\n    ngsi.id = \"Konstanz-EcoCounter-\" + msg.countingSiteInfo.id\n    ngsi.type = \"TrafficFlowObserved\"\n\n    let name = {}\n    name.type = \"String\"\n    name.value = msg.countingSiteInfo.name\n    ngsi.name = name\n\n    let dateObserved = {}\n    dateObserved.type = \"String\"\n    dateObserved.value = count.isoDate\n    ngsi.dateObserved = dateObserved\n\n    let location = {}\n    location.type = \"geo:json\"\n    location.value = {\n        \"type\": \"Point\",\n        \"coordinates\": [msg.countingSiteInfo.longitude, msg.countingSiteInfo.latitude]\n    }\n    ngsi.location = location\n\n    let intensity = {}\n    intensity.type = \"Number\"\n    intensity.value = count.counts\n    if (intensity.value) {\n        ngsi.intensity = intensity\n    }\n\n    let vehicleType = {}\n    vehicleType.type = \"String\"\n    vehicleType.value = \"bicycle\"\n    ngsi.vehicleType = vehicleType\n\n    entities.push(ngsi)\n}\n\nmsg.ngsiEntities = entities\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1440,
+        "wires": [
+            [
+                "3ad193019eec8f08"
+            ]
+        ]
+    },
+    {
+        "id": "3ad193019eec8f08",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Setup Orion Update Request",
+        "func": "msg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/op/update\"\n\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'ecocounter'\n\nmsg.payload = {}\n\nif (msg.ngsiEntities.length > 2000) {\n    const data = msg.ngsiEntities.slice(0, 2000)\n    const rest = msg.ngsiEntities.slice(2000)\n\n    msg.payload.entities = data\n    msg.ngsiEntities = rest\n\n    msg.remaining_data = true\n} else {\n    msg.payload.entities = msg.ngsiEntities;\n    msg.remaining_data = false\n}\n\nmsg.payload.actionType = 'append'\nmsg.payload = msg.payload;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 1280,
+        "wires": [
+            [
+                "1f52e24186c281b8",
+                "5a7af2d87744cc70"
+            ]
+        ]
+    },
+    {
+        "id": "1f52e24186c281b8",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "POST Data to Orion",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 960,
+        "y": 1340,
+        "wires": [
+            [
+                "5a7af2d87744cc70"
+            ]
+        ]
+    },
+    {
+        "id": "9d7d7ba9a9e8c5e3",
+        "type": "comment",
+        "z": "feeb3a3da4155b63",
+        "name": "Schedule  Haltestelle Fürstenberg",
+        "info": "",
+        "x": 170,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "8cefca60ecc1be01",
+        "type": "debug",
+        "z": "feeb3a3da4155b63",
+        "name": "debug 22",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ede4e49adecc4363",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Setup Orion Update Request",
+        "func": "msg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/op/update\"\n\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'ecocounter'\n\nmsg.payload = {}\n\nif (msg.ngsiEntities.length > 2000) {\n    const data = msg.ngsiEntities.slice(0, 2000)\n    const rest = msg.ngsiEntities.slice(2000)\n\n    msg.payload.entities = data\n    msg.ngsiEntities = rest\n\n    msg.remaining_data = true\n} else {\n    msg.payload.entities = msg.ngsiEntities;\n    msg.remaining_data = false\n}\n\nmsg.payload.actionType = 'append'\nmsg.payload = msg.payload;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 100,
+        "wires": [
+            [
+                "0532c04171d3ce8e",
+                "8cefca60ecc1be01"
+            ]
+        ]
+    },
+    {
+        "id": "0532c04171d3ce8e",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "POST Data to Orion",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 960,
+        "y": 160,
+        "wires": [
+            [
+                "8cefca60ecc1be01"
+            ]
+        ]
+    },
+    {
+        "id": "7678735aef2bea88",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare TrafficFlowObserved Datamodel",
+        "func": "let entities = []\n\nfor (const count of msg.payload) {\n    if( count.counts == null || count.status == null )\n        continue;\n    \n    let ngsi = {}\n\n    ngsi.id = \"Konstanz-EcoCounter-\" + msg.countingSiteInfo.id\n    ngsi.type = \"TrafficFlowObserved\"\n\n    let name = {}\n    name.type = \"String\"\n    name.value = msg.countingSiteInfo.name\n    ngsi.name = name\n\n    let dateObserved = {}\n    dateObserved.type = \"String\"\n    dateObserved.value = count.isoDate\n    ngsi.dateObserved = dateObserved\n\n    let location = {}\n    location.type = \"geo:json\"\n    location.value = {\n        \"type\": \"Point\",\n        \"coordinates\": [msg.countingSiteInfo.longitude, msg.countingSiteInfo.latitude]\n    }\n    ngsi.location = location\n\n    let intensity = {}\n    intensity.type = \"Number\"\n    intensity.value = count.counts\n    if (intensity.value) {\n        ngsi.intensity = intensity\n    }\n\n    let vehicleType = {}\n    vehicleType.type = \"String\"\n    vehicleType.value = \"bicycle\"\n    ngsi.vehicleType = vehicleType\n\n    entities.push(ngsi)\n}\n\nmsg.ngsiEntities = entities\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 280,
+        "wires": [
+            [
+                "ede4e49adecc4363"
+            ]
+        ]
+    },
+    {
+        "id": "2d5611567905a066",
+        "type": "inject",
+        "z": "feeb3a3da4155b63",
+        "d": true,
+        "name": "Inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 06 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 1600,
+        "wires": [
+            [
+                "e1aa64f600b4dbd1"
+            ]
+        ]
+    },
+    {
+        "id": "d7e724f029479710",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "GET Counting Site Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 210,
+        "y": 1760,
+        "wires": [
+            [
+                "bdc30638b9b95f99"
+            ]
+        ]
+    },
+    {
+        "id": "16eca6bcbccde3b1",
+        "type": "debug",
+        "z": "feeb3a3da4155b63",
+        "name": "debug 25",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 1740,
+        "wires": []
+    },
+    {
+        "id": "e1aa64f600b4dbd1",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare API Call",
+        "func": "msg.url = \"https://apieco.eco-counter-tools.com/api/1.0/site/300047091\";\n\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = \"Bearer b04c567c48f11398c2d144195693a1d\";\nmsg.headers[\"Accept\"] = \"application/json\"\n\nmsg.payload=\"\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 1700,
+        "wires": [
+            [
+                "d7e724f029479710"
+            ]
+        ]
+    },
+    {
+        "id": "bdc30638b9b95f99",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Store Counting Site Info",
+        "func": "msg.countingSiteInfo = msg.payload;\nmsg.payload = \"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 1820,
+        "wires": [
+            [
+                "150064535f60d8ba"
+            ]
+        ]
+    },
+    {
+        "id": "150064535f60d8ba",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare Counting Data API Call",
+        "func": "//const begin = \"2023-02-03T00%3A00%3A00\"\n//const end = \"2023-02-04T00%3A00%3A00\"\n\nconst begin24 = new Date(new Date().setDate(new Date().getDate() - 1))\nconst begin = new Date(begin24.setHours(begin24.getHours() - 6)).toISOString();\n\nconst end = new Date().toISOString()\n\n\nmsg.url = \"https://apieco.eco-counter-tools.com/api/1.0/data/site/300047091?begin=\"+begin+\"&end=\"+end+\"&step=15m\";\n\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = \"Bearer b04c567c48f11398c2d144195693a1d\";\nmsg.headers[\"Accept\"] = \"application/json\"\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 1640,
+        "wires": [
+            [
+                "eed01f159fc65e91"
+            ]
+        ]
+    },
+    {
+        "id": "eed01f159fc65e91",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "GET Counter Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 490,
+        "y": 1700,
+        "wires": [
+            [
+                "5824dc8a8cf0f127"
+            ]
+        ]
+    },
+    {
+        "id": "5824dc8a8cf0f127",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Prepare TrafficFlowObserved Datamodel",
+        "func": "let entities = []\n\nfor (const count of msg.payload) {\n    if( count.counts == null || count.status == null )\n        continue;\n    \n    let ngsi = {}\n\n    ngsi.id = \"Konstanz-EcoCounter-\" + msg.countingSiteInfo.id\n    ngsi.type = \"TrafficFlowObserved\"\n\n    let name = {}\n    name.type = \"String\"\n    name.value = msg.countingSiteInfo.name\n    ngsi.name = name\n\n    let dateObserved = {}\n    dateObserved.type = \"String\"\n    dateObserved.value = count.isoDate\n    ngsi.dateObserved = dateObserved\n\n    let location = {}\n    location.type = \"geo:json\"\n    location.value = {\n        \"type\": \"Point\",\n        \"coordinates\": [msg.countingSiteInfo.longitude, msg.countingSiteInfo.latitude]\n    }\n    ngsi.location = location\n\n    let intensity = {}\n    intensity.type = \"Number\"\n    intensity.value = count.counts\n    if (intensity.value) {\n        ngsi.intensity = intensity\n    }\n\n    let vehicleType = {}\n    vehicleType.type = \"String\"\n    vehicleType.value = \"bicycle\"\n    ngsi.vehicleType = vehicleType\n\n    entities.push(ngsi)\n}\n\nmsg.ngsiEntities = entities\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 1780,
+        "wires": [
+            [
+                "3c1bc053581d6596"
+            ]
+        ]
+    },
+    {
+        "id": "3c1bc053581d6596",
+        "type": "function",
+        "z": "feeb3a3da4155b63",
+        "name": "Setup Orion Update Request",
+        "func": "msg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/op/update\"\n\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'ecocounter'\n\nmsg.payload = {}\n\nif (msg.ngsiEntities.length > 2000) {\n    const data = msg.ngsiEntities.slice(0, 2000)\n    const rest = msg.ngsiEntities.slice(2000)\n\n    msg.payload.entities = data\n    msg.ngsiEntities = rest\n\n    msg.remaining_data = true\n} else {\n    msg.payload.entities = msg.ngsiEntities;\n    msg.remaining_data = false\n}\n\nmsg.payload.actionType = 'append'\nmsg.payload = msg.payload;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 1620,
+        "wires": [
+            [
+                "9511156e4c92cd50",
+                "16eca6bcbccde3b1"
+            ]
+        ]
+    },
+    {
+        "id": "9511156e4c92cd50",
+        "type": "http request",
+        "z": "feeb3a3da4155b63",
+        "name": "POST Data to Orion",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 980,
+        "y": 1680,
+        "wires": [
+            [
+                "16eca6bcbccde3b1"
+            ]
+        ]
+    },
+    {
+        "id": "0e4261906ecff477",
+        "type": "comment",
+        "z": "feeb3a3da4155b63",
+        "name": "Schedule  Haltestelle Beethovenstraße",
+        "info": "",
+        "x": 210,
+        "y": 1640,
+        "wires": []
+    }
+]
